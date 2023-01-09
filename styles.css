@@ -1,0 +1,24 @@
+
+.navbar {
+  background-color:rgb(192, 37, 37);
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-brand {
+  color: black;
+  padding-top: 1px
+  
+
+}
+
+.navbar-brand:hover {
+  color: rgb(255, 255, 255);
+}
+
+
+.container {
+  margin-top: 200px;
+}
