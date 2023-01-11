@@ -13,3 +13,31 @@ create table "Vizualization3" (
 	"Year" int not null,
 	"GoalsScored" varchar not null
 )
+
+
+create table vizualization2 (
+	year int,
+	city varchar not null,
+	home_team_goals int,
+	away_team_goals int,
+	total_goals int
+);
+
+
+create table vizualization3 (
+	winner varchar not null,
+	year int not null,
+	goalsscored varchar not null
+);
+
+
+create table vizualization1 (
+	stage varchar not null,
+	year int,
+	goalsscored int,
+	home_team_name varchar,
+	away_team_name varchar,
+	attendance int,
+	matchid varchar,
+	stage_home_away_team varchar
+);
