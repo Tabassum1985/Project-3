@@ -1,20 +1,36 @@
-// Get the samples json
-const attendance = "";
+// Get the attendance data json
+const attendance = "http://127.0.0.1:5000/db_call";
 
-
+console.log("Run 12")
 function populateSelector() {
 // Fetch the JSON data 
 d3.json(attendance).then(function(data) {
 
-    console.log(data);
-    idList = data.Year
+    console.log(data[0].year);
+
+    idList = data
+    
+    yearList = []
+
+    // yearList.push(data[0].year)
+
+    for (let i = 0; i < idList.length; i++) {
+        
+        if (yearList.includes(data[i].year) == false) {
+            
+            yearList.push(data[i].year);
+        }
+    }
+    console.log(yearList)
+
 
     // Use D3 to select the drop down
     let selData = d3.select("#selDataset");
 
-    for (let i = 0; i < idList.length; i++) {
+    for (let i = 0; i < yearList.length; i++) {
         // Append option list
-        selData.append("option").text(idList[i]).property("value", idList[i]);
+        selData.append("option").text(yearList[i]).property("value", yearList[i]);
+        
     }
 });
 }
@@ -25,28 +41,71 @@ function charts(selectedID) {
 
 
     d3.json(attendance).then(function(data) {
-    // I need data for top 10 OTUs for individual sample_values = data for the bar
-    // otu_ids = labels
-    // otu_labels = hovertext
 
+    // Create a list of all games and their attendance
+    
+    idList = data
+    
+    gameList = []
+
+    for (let i = 0; i < idList.length; i++) {
         
-        // filter based on the current selection: Sample and MetaData
-        let currentSample = data.samples.filter(patient => patient.id == selectedID)[0];
-        let currentMetaData = data.metadata.filter(patient => patient.id == selectedID)[0];
+        if (data[i].year == selectedID) {
+            
+            gameList.push(data[i].stage_home_away_team);
+        }
+        
+        
+    }
+    console.log(gameList)
 
-        // // Slice the first 10 objects for plotting
-        // // Reverse the array to accommodate Plotly's defaults
+    attendanceGameList = []
 
-        // Trace for the Data
-        const ctx = document.getElementById('myChart');
+    for (let i = 0; i < idList.length; i++) {
+        
+        if (data[i].year == selectedID) {
+            
+            attendanceGameList.push(data[i].attendance);
+        }
+        
+        
+    }
+    console.log(attendanceGameList)
 
-    new Chart(ctx, {
+
+    games_attendance = gameList.map((game, index) => {
+        return {game: game, attendance: attendanceGameList[index]};
+    });
+    
+    games_attendance.sort((a, b) => b.attendance - a.attendance);
+    console.log(games_attendance)
+
+    topTenGames = games_attendance.slice(0, 10);
+    console.log(topTenGames);
+
+    labels = []
+    data = []
+
+    for (let i = 0; i < topTenGames.length; i++) {
+        
+        labels.push(topTenGames[i].game);
+        data.push(topTenGames[i].attendance);
+        
+    }
+
+    
+    
+    // Chart.js element
+    const ctx = document.getElementById('myChart');
+   
+
+    myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: labels,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Total Attendance',
+                data: data,
                 borderWidth: 1
             }]
         },
@@ -65,6 +124,11 @@ function charts(selectedID) {
 // function for when the drop down is changed
 function optionChanged(selectedID) {
     console.log(selectedID);
+    // Check if the chart already exists
+    if (myChart) {
+        // Destroy the existing chart
+            myChart.destroy();
+        }
     charts(selectedID);
 }
 
@@ -72,9 +136,9 @@ function optionChanged(selectedID) {
 // run initializer 
 function init() {
     d3.json(attendance).then(function(data) {
-    
+
     populateSelector();
-    charts(data.Year[0]);
+    charts(data[0].year);
     })
 }
 

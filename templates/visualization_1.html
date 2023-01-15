@@ -32,7 +32,7 @@ crossorigin="anonymous"></script>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/home">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href=""></a>
@@ -42,9 +42,9 @@ crossorigin="anonymous"></script>
                   Plots
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="visualization_1.html">Visualization 1</a></li>
-                  <li><a class="dropdown-item" href="visualization_2.html">Visualization 2</a></li>
-                  <li><a class="dropdown-item" href="visualization_3.html">Visualization 3</a></li>
+                  <li><a class="dropdown-item" href="http://127.0.0.1:5000/visualization1">Visualization 1</a></li>
+                  <li><a class="dropdown-item" href="http://127.0.0.1:5000/visualization2">Visualization 2</a></li>
+                  <li><a class="dropdown-item" href="http://127.0.0.1:5000/visualization3">Visualization 3</a></li>
                   
                 </ul>
               </li>
@@ -56,6 +56,42 @@ crossorigin="anonymous"></script>
         </div>
       </nav>
       <!-- End of navbar -->
+
+      
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 jumbotron text-center">
+              <h1>Attendance to the world cup matches</h1>
+              <h3>Top ten matches with the highest attendance per year</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <div class="well">
+                <h5>Year:</h5>
+                <select id="selDataset" onchange="optionChanged(this.value)"></select>
+              </div>
+              
+            </div>
+            
+            
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+        </div>
+      
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+     
+        
+       
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script src="../static/visualization_1.js"></script>
+      
 
 </body>
 </html>

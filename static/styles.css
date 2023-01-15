@@ -1,6 +1,6 @@
 
 .navbar {
-  background-color:rgb(192, 37, 37);
+  background-color:rgb(41, 50, 65);
 }
 
 .navbar-nav {
@@ -8,7 +8,7 @@
 }
 
 .navbar-brand {
-  color: black;
+  color: rgb(240, 229, 229);
   padding-top: 1px
   
 
@@ -19,6 +19,23 @@
 }
 
 
+
+
+
+
 .container {
   margin-top: 200px;
+}
+
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+#map,
+body,
+html {
+  width: 1400px;
+  height: 500px;
 }
