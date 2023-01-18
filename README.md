@@ -8,10 +8,14 @@ Team decided to go with PostgreSQL of all the options available is because the d
 # Visualization 1
 
 In the first visualization team wanted to showcase attendance to world cup matches based on years. Users can choose a year from the dropdown list and view top ten matches with highest attendance for that year. When a user comes to this website they are met with the following page:
+![image](https://user-images.githubusercontent.com/112669805/213077059-4b4b263e-86ff-4918-bd38-db25b9fea846.png)
+
 
 
  
 Once the user choses a year from the dropdown menu they will be taken to the following page. For example, let’s assume user chose the year 1930, they will be able to see top ten matches with most attendance for the year 1930:
+
+![image](https://user-images.githubusercontent.com/112669805/213077077-a46f4eca-872e-4f79-b20e-8bb85e2b1b02.png)
 
  
 # Visualization 2
