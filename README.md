@@ -22,9 +22,13 @@ Once the user choses a year from the dropdown menu they will be taken to the fol
 
 On the 2nd part of the visualization, the team tried to demonstrate distribution of goals across cities through a heatmap.
 
+![image](https://user-images.githubusercontent.com/112669805/213077127-abe31507-1474-4ba4-b91b-b4a89b1eb7cf.png)
+
  
 Once user has chosen a specific year they will be taken to a heatmap of cities that have most goals for that year:
- 
+
+ ![image](https://user-images.githubusercontent.com/112669805/213077145-dffa05d4-337b-41b2-9b62-6a47661b82b2.png)
+
 
 # Visualization 3
 
@@ -32,6 +36,9 @@ In this part team tried to create a visualization based on the winners of FIFA w
 •	Winner
 •	Year of winning
 •	No.of goals
+
+![image](https://user-images.githubusercontent.com/112669805/213077176-09460351-8292-4bcf-8c0a-29db04a35682.png)
+
  
 
 # Conclusion
