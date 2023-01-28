@@ -3,16 +3,17 @@ from flask import Flask, render_template, jsonify
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, inspect
+import pandas as pd
 import numpy as np
 
 # Import key
-from key import postgreskey
+#from key import postgreskey
 
 #connect to local db
 
 protocol = 'postgresql'
 username = 'postgres'
-password = postgreskey
+password = 'Postgres'
 host = 'localhost'
 port = 5432
 database_name = 'Soccer'
@@ -59,6 +60,7 @@ def dbCall1():
 
 @app.route('/db_call2')
 def dbCall2():
+
     results = engine.execute("SELECT * FROM vizualization2")
     return jsonify([dict(_) for _ in results])
 
@@ -69,6 +71,16 @@ def dbCall3():
     results = engine.execute("SELECT * FROM vizualization3")
     return jsonify([dict(_) for _ in results])
 
+@app.route('/db_call4')
+def dbCall4():
+    results = engine.execute("SELECT * FROM vizualization3")
+    results = pd.DataFrame(results)
+    results.loc[:, 0]. unique()
+    Stats = {}
+    for x in results[0].unique():
+        df = results[results[0] == x]
+        Stats[x] = list(df[1])
+    return jsonify(Stats)
 
 if __name__ == '__main__':
 
